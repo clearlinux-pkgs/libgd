@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.2.5
-Release  : 28
+Release  : 29
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Summary  : GD graphics library
