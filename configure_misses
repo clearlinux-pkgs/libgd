@@ -1,5 +1,3 @@
-Configure miss: whether gcc is Clang
-Configure miss: whether more special flags are required for pthreads
 Configure miss: libimagequant.h usability
 Configure miss: libimagequant.h presence
 Configure miss: libimagequant.h
