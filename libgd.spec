@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.2.5
-Release  : 32
+Release  : 33
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Summary  : GD graphics library
@@ -21,6 +21,8 @@ BuildRequires : pkgconfig(xpm)
 BuildRequires : zlib-dev
 Patch1: cve-2016-7568.patch
 Patch2: CVE-2018-1000222.patch
+Patch3: CVE-2019-6978.patch
+Patch4: CVE-2019-6977.patch
 
 %description
 GD Graphics (Draw) Library. GD is an open source code library for the dynamic
@@ -70,13 +72,15 @@ license components for the libgd package.
 %setup -q -n libgd-2.2.5
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1539716220
+export SOURCE_DATE_EPOCH=1548719715
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -92,7 +96,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1539716220
+export SOURCE_DATE_EPOCH=1548719715
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgd
 cp src/COPYING %{buildroot}/usr/share/package-licenses/libgd/src_COPYING
