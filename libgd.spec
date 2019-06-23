@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.2.5
-Release  : 33
+Release  : 35
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Summary  : GD graphics library
@@ -23,6 +23,7 @@ Patch1: cve-2016-7568.patch
 Patch2: CVE-2018-1000222.patch
 Patch3: CVE-2019-6978.patch
 Patch4: CVE-2019-6977.patch
+Patch5: CVE-2019-11038.patch
 
 %description
 GD Graphics (Draw) Library. GD is an open source code library for the dynamic
@@ -46,6 +47,7 @@ Group: Development
 Requires: libgd-lib = %{version}-%{release}
 Requires: libgd-bin = %{version}-%{release}
 Provides: libgd-devel = %{version}-%{release}
+Requires: libgd = %{version}-%{release}
 
 %description dev
 dev components for the libgd package.
@@ -74,17 +76,19 @@ license components for the libgd package.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1548719715
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export SOURCE_DATE_EPOCH=1561249665
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -96,7 +100,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1548719715
+export SOURCE_DATE_EPOCH=1561249665
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgd
 cp src/COPYING %{buildroot}/usr/share/package-licenses/libgd/src_COPYING
