@@ -4,3 +4,9 @@ Configure miss: libimagequant.h
 Configure miss: LIBTIFF
 Configure miss: TIFFClientOpen in -ltiff
 Configure miss: whether we are building for a Win32 host
+Configure miss: libimagequant.h usability
+Configure miss: libimagequant.h presence
+Configure miss: libimagequant.h
+Configure miss: libtiff-4
+Configure miss: TIFFClientOpen in -ltiff
+Configure miss: whether we are building for a Win32 host

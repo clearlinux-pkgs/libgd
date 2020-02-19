@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.2.5
-Release  : 36
+Release  : 37
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.2.5/libgd-2.2.5.tar.xz
 Summary  : GD graphics library
@@ -24,6 +24,7 @@ Patch2: CVE-2018-1000222.patch
 Patch3: CVE-2019-6978.patch
 Patch4: CVE-2019-6977.patch
 Patch5: CVE-2019-11038.patch
+Patch6: CVE-2018-14553.patch
 
 %description
 GD Graphics (Draw) Library. GD is an open source code library for the dynamic
@@ -72,18 +73,23 @@ license components for the libgd package.
 
 %prep
 %setup -q -n libgd-2.2.5
+cd %{_builddir}/libgd-2.2.5
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
+## build_prepend content
+aclocal && automake
+## build_prepend end
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561249665
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1582142652
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -93,17 +99,17 @@ export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1561249665
+export SOURCE_DATE_EPOCH=1582142652
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgd
-cp src/COPYING %{buildroot}/usr/share/package-licenses/libgd/src_COPYING
+cp %{_builddir}/libgd-2.2.5/src/COPYING %{buildroot}/usr/share/package-licenses/libgd/8720c01d1a84fdba5fcf11f4dbe4d5b0a62c6d52
 %make_install
 
 %files
@@ -127,7 +133,19 @@ cp src/COPYING %{buildroot}/usr/share/package-licenses/libgd/src_COPYING
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/*.h
+/usr/include/entities.h
+/usr/include/gd.h
+/usr/include/gd_color_map.h
+/usr/include/gd_errors.h
+/usr/include/gd_io.h
+/usr/include/gdcache.h
+/usr/include/gdfontg.h
+/usr/include/gdfontl.h
+/usr/include/gdfontmb.h
+/usr/include/gdfonts.h
+/usr/include/gdfontt.h
+/usr/include/gdfx.h
+/usr/include/gdpp.h
 /usr/lib64/libgd.so
 /usr/lib64/pkgconfig/gdlib.pc
 
@@ -138,4 +156,4 @@ cp src/COPYING %{buildroot}/usr/share/package-licenses/libgd/src_COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libgd/src_COPYING
+/usr/share/package-licenses/libgd/8720c01d1a84fdba5fcf11f4dbe4d5b0a62c6d52
