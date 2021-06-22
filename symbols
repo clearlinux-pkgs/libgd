@@ -29,6 +29,11 @@ libgd.so.3:gdFreeFontCache
 libgd.so.3:gdImageAABlend
 libgd.so.3:gdImageAlphaBlending
 libgd.so.3:gdImageArc
+libgd.so.3:gdImageAvif
+libgd.so.3:gdImageAvifCtx
+libgd.so.3:gdImageAvifEx
+libgd.so.3:gdImageAvifPtr
+libgd.so.3:gdImageAvifPtrEx
 libgd.so.3:gdImageBmp
 libgd.so.3:gdImageBmpCtx
 libgd.so.3:gdImageBmpPtr
@@ -65,6 +70,9 @@ libgd.so.3:gdImageCopyResampled
 libgd.so.3:gdImageCopyResized
 libgd.so.3:gdImageCopyRotated
 libgd.so.3:gdImageCreate
+libgd.so.3:gdImageCreateFromAvif
+libgd.so.3:gdImageCreateFromAvifCtx
+libgd.so.3:gdImageCreateFromAvifPtr
 libgd.so.3:gdImageCreateFromBmp
 libgd.so.3:gdImageCreateFromBmpCtx
 libgd.so.3:gdImageCreateFromBmpPtr
@@ -81,6 +89,9 @@ libgd.so.3:gdImageCreateFromGdPtr
 libgd.so.3:gdImageCreateFromGif
 libgd.so.3:gdImageCreateFromGifCtx
 libgd.so.3:gdImageCreateFromGifPtr
+libgd.so.3:gdImageCreateFromHeif
+libgd.so.3:gdImageCreateFromHeifCtx
+libgd.so.3:gdImageCreateFromHeifPtr
 libgd.so.3:gdImageCreateFromJpeg
 libgd.so.3:gdImageCreateFromJpegCtx
 libgd.so.3:gdImageCreateFromJpegCtxEx
@@ -94,6 +105,9 @@ libgd.so.3:gdImageCreateFromPngSource
 libgd.so.3:gdImageCreateFromTga
 libgd.so.3:gdImageCreateFromTgaCtx
 libgd.so.3:gdImageCreateFromTgaPtr
+libgd.so.3:gdImageCreateFromTiff
+libgd.so.3:gdImageCreateFromTiffCtx
+libgd.so.3:gdImageCreateFromTiffPtr
 libgd.so.3:gdImageCreateFromWBMP
 libgd.so.3:gdImageCreateFromWBMPCtx
 libgd.so.3:gdImageCreateFromWBMPPtr
@@ -144,6 +158,11 @@ libgd.so.3:gdImageGifAnimEndPtr
 libgd.so.3:gdImageGifCtx
 libgd.so.3:gdImageGifPtr
 libgd.so.3:gdImageGrayScale
+libgd.so.3:gdImageHeif
+libgd.so.3:gdImageHeifCtx
+libgd.so.3:gdImageHeifEx
+libgd.so.3:gdImageHeifPtr
+libgd.so.3:gdImageHeifPtrEx
 libgd.so.3:gdImageInterlace
 libgd.so.3:gdImageJpeg
 libgd.so.3:gdImageJpegCtx
@@ -193,6 +212,9 @@ libgd.so.3:gdImageStringFTEx
 libgd.so.3:gdImageStringTTF
 libgd.so.3:gdImageStringUp
 libgd.so.3:gdImageStringUp16
+libgd.so.3:gdImageTiff
+libgd.so.3:gdImageTiffCtx
+libgd.so.3:gdImageTiffPtr
 libgd.so.3:gdImageTrueColorToPalette
 libgd.so.3:gdImageTrueColorToPaletteSetMethod
 libgd.so.3:gdImageTrueColorToPaletteSetQuality
