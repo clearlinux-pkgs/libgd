@@ -1,0 +1,2 @@
+# Export TMP to fix some tests... adapted from Arch Linux package
+TMP=$(mktemp -d) make V=1 VERBOSE=1 %{?_smp_mflags} check
