@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.3.3
-Release  : 40
+Release  : 41
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Summary  : GD graphics library
@@ -80,7 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631474589
+export SOURCE_DATE_EPOCH=1632321744
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -98,7 +98,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 TMP=$(mktemp -d) make V=1 VERBOSE=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1631474589
+export SOURCE_DATE_EPOCH=1632321744
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgd
 cp %{_builddir}/libgd-2.3.3/COPYING %{buildroot}/usr/share/package-licenses/libgd/6f8207620999c02672110df88dfd165619deff88
