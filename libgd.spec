@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.3.3
-Release  : 42
+Release  : 43
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Summary  : GD graphics library
@@ -13,16 +13,26 @@ License  : MIT
 Requires: libgd-bin = %{version}-%{release}
 Requires: libgd-lib = %{version}-%{release}
 Requires: libgd-license = %{version}-%{release}
+BuildRequires : automake
+BuildRequires : automake-dev
 BuildRequires : buildreq-cmake
 BuildRequires : fontconfig-dev
+BuildRequires : gettext-bin
 BuildRequires : libavif-dev
 BuildRequires : liberation-fonts
 BuildRequires : libjpeg-turbo-dev
+BuildRequires : libtool
+BuildRequires : libtool-dev
 BuildRequires : libwebp-dev
+BuildRequires : m4
+BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(libpng)
 BuildRequires : pkgconfig(xpm)
 BuildRequires : zlib-dev
+Patch1: 0001-Revert-Fix-318-these-macros-are-not-used-as-planed-w.patch
+Patch2: 0002-add-comment-to-not-remove-these-macros.patch
+Patch3: 0003-install-missing-header-used-by-gdpp.h.patch
 
 %description
 GD Graphics (Draw) Library. GD is an open source code library for the dynamic
@@ -72,6 +82,9 @@ license components for the libgd package.
 %prep
 %setup -q -n libgd-2.3.3
 cd %{_builddir}/libgd-2.3.3
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 ## build_prepend content
@@ -81,13 +94,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1632332765
+export SOURCE_DATE_EPOCH=1632348114
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-%configure --disable-static
+%reconfigure --disable-static
 make  %{?_smp_mflags}
 
 %check
@@ -99,7 +112,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 TMP=$(mktemp -d) make V=1 VERBOSE=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1632332765
+export SOURCE_DATE_EPOCH=1632348114
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgd
 cp %{_builddir}/libgd-2.3.3/COPYING %{buildroot}/usr/share/package-licenses/libgd/6f8207620999c02672110df88dfd165619deff88
@@ -130,6 +143,7 @@ cp %{_builddir}/libgd-2.3.3/docs/naturaldocs/html/files/license-txt.html %{build
 /usr/include/gd_color_map.h
 /usr/include/gd_errors.h
 /usr/include/gd_io.h
+/usr/include/gd_io_stream.h
 /usr/include/gdcache.h
 /usr/include/gdfontg.h
 /usr/include/gdfontl.h
