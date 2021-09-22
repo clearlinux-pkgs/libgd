@@ -1,15 +1,11 @@
 Configure miss: 32-bit host C ABI
-Configure miss: LIBAVIF
 Configure miss: LIBHEIF
 Configure miss: LIBRAQM
 Configure miss: LIBTIFF
 Configure miss: TIFFClientOpen in -ltiff
 Configure miss: TIFFClientOpen in -ltiff
-Configure miss: avifVersion in -lavif
-Configure miss: avifVersion in -lavif
 Configure miss: heif_get_version in -lheif
 Configure miss: heif_get_version in -lheif
-Configure miss: libavif >= 0.8.2
 Configure miss: libheif >= 1.7.0
 Configure miss: libimagequant.h
 Configure miss: libimagequant.h

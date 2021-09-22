@@ -3,3 +3,4 @@
 libwebp-dev
 # Install a fonts package to fix fontconfig/basic test
 liberation-fonts
+libavif-dev
