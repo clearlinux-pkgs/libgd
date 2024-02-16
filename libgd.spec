@@ -4,7 +4,7 @@
 #
 Name     : libgd
 Version  : 2.3.3
-Release  : 44
+Release  : 45
 URL      : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Source0  : https://github.com/libgd/libgd/releases/download/gd-2.3.3/libgd-2.3.3.tar.xz
 Summary  : GD graphics library
